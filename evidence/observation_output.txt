@@ -1,0 +1,11 @@
+deadline: value=datetime.datetime(2026, 8, 20, 0, 0, tzinfo=datetime.timezone.utc), tzinfo=datetime.timezone.utc, utcoffset=datetime.timedelta(0)
+now: value=datetime.datetime(2026, 8, 19, 0, 0), tzinfo=None, utcoffset=None
+is_expired raised: TypeError: can't compare offset-naive and offset-aware datetimes
+Traceback (most recent call last):
+  File "/home/ubuntu/work/python-datetime-naive-aware-lab/evidence/observe_failure.py", line 28, in <module>
+    print(f"is_expired: {is_expired(raw_deadline, clock)}")
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/work/python-datetime-naive-aware-lab/src/deadline_guard.py", line 18, in is_expired
+    return now >= deadline
+           ^^^^^^^^^^^^^^^
+TypeError: can't compare offset-naive and offset-aware datetimes
