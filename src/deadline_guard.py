@@ -1,9 +1,9 @@
-"""ISO 8601期限を判定する最小再現コード（意図的に不具合を含む）。"""
+"""ISO 8601期限を判定する最小再現コード。"""
 
 from collections.abc import Callable
-from datetime import datetime
+from datetime import datetime, timezone, tzinfo
 
-Clock = Callable[[], datetime]
+Clock = Callable[[tzinfo | None], datetime]
 
 
 def parse_deadline(raw_deadline: str) -> datetime:
@@ -12,7 +12,7 @@ def parse_deadline(raw_deadline: str) -> datetime:
 
 
 def is_expired(raw_deadline: str, clock: Clock = datetime.now) -> bool:
-    """期限が現在時刻以前ならTrueを返す。"""
+    """UTC期限がUTCの現在時刻以前ならTrueを返す。"""
     deadline = parse_deadline(raw_deadline)
-    now = clock()
+    now = clock(timezone.utc)
     return now >= deadline

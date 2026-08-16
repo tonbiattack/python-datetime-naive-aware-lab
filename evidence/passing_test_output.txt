@@ -1,0 +1,11 @@
+test_clock_receives_utc_timezone (test_deadline_guard.DeadlineGuardTest.test_clock_receives_utc_timezone)
+回帰防止: 現在時刻の生成時にUTCを明示する。 ... ok
+test_future_utc_deadline_is_not_expired (test_deadline_guard.DeadlineGuardTest.test_future_utc_deadline_is_not_expired)
+元の失敗ケース: 未来のUTC期限は期限切れではない。 ... ok
+test_past_utc_deadline_is_expired (test_deadline_guard.DeadlineGuardTest.test_past_utc_deadline_is_expired)
+対照ケース: 過去のUTC期限は期限切れになる。 ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
